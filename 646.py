@@ -12,3 +12,7 @@ class Solution:
                     dp[i] = max(dp[i], dp[j] + 1)
 
         return dp[-1]
+
+
+solution = Solution()
+solution.findLongestChain([[1, 2], [2, 3], [3, 4]])
