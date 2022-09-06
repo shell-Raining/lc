@@ -4,11 +4,7 @@ class Solution:
         lnum = 0
         rnum = 0
         for item in s:
-            print(item)
-            if item == 'R':
-                rnum += 1
-            else:
-                lnum += 1
+            (rnum := rnum + 1) if item == 'R' else (lnum := lnum + 1)
 
             if lnum == rnum:
                 num += 1
