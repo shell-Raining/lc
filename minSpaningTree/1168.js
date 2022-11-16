@@ -8,7 +8,7 @@ var minCostToSupplyWater = function (n, wells, pipes) {
   let disjointSet = new DisjointSet(n);
   // 1. add wels to pipes
   for (let i = 0; i < wells.length; i++) {
-    pipes.push([i + 1, i + 1, wells[i]]);
+    pipes.push([0, i + 1, wells[i]]);
   }
 
   // 2. sort the pipes
@@ -24,15 +24,17 @@ var minCostToSupplyWater = function (n, wells, pipes) {
       i++;
       res += cost;
       if (i === n) {
+        break;
       }
     }
   }
+  return res;
 };
 
 class DisjointSet {
   constructor(n) {
-    this.pa = new Array(n).fill(0).map((_, index) => index);
-    this.size = new Array(n).fill(1);
+    this.pa = new Array(n + 1).fill(0).map((_, index) => index);
+    this.size = new Array(n + 1).fill(1);
   }
 
   find(x) {
@@ -58,11 +60,11 @@ class DisjointSet {
 }
 
 let res = minCostToSupplyWater(
-  3,
-  [1, 2, 2],
+  2,
+  [1, 1],
   [
     [1, 2, 1],
-    [2, 3, 1],
+    [1, 2, 2],
   ]
 );
 console.log(res);
