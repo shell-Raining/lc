@@ -18,7 +18,7 @@ var minimumCost = function (n, connections) {
     if (disjointSet.union(a, b)) {
       i++;
       res += cost;
-      if (i === n - 1) {
+      if (disjointSet.setCount === 1) {
         return res;
       }
     }
@@ -30,6 +30,7 @@ class DisjointSet {
   constructor(n) {
     this.pa = new Array(n).fill(0).map((_, index) => index);
     this.size = new Array(n).fill(1);
+    this.setCount = n;
   }
 
   find(x) {
@@ -51,6 +52,7 @@ class DisjointSet {
 
     this.pa[ry] = rx;
     this.size[rx] += this.size[ry];
+    this.setCount--;
     return true;
   }
 }
