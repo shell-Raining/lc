@@ -7,9 +7,7 @@ var minimumCost = function (n, connections) {
   let disjointSet = new DisjointSet(n);
 
   // 1. sort the connections
-  connections.sort((a, b) => {
-    return a[2] - b[2];
-  });
+  connections.sort((a, b) => a[2] - b[2]);
 
   // 2. find the min cost
   let i = 0;
